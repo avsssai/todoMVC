@@ -1,0 +1,133 @@
+.App {
+  text-align: center;
+}
+
+
+.App-header {
+  font-size: calc(10px + 15vmin);
+  color: pink;
+  font-weight: 100;
+}
+
+
+.new-todo {
+  padding: 10px 10px 10px 30px;
+  width:40vw;
+  font-size: 32px;
+  border: none;
+  background: rgba(0, 0, 0, 0.003);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  background-color: white;
+  opacity: 0.6;
+  font-weight: 300;
+}
+
+.new-todo:focus{
+  outline: none;
+}
+
+.new-todo::placeholder {
+  font-weight: 200;
+  font-style: italic;
+  font-size:inherit ;
+  color: gray;
+  opacity: 0.4;
+}
+
+
+.toggle-all {
+	text-align: center;
+	border: none; /* Mobile Safari */
+	opacity: 0;
+	position: absolute;
+}
+
+.toggle-all + label {
+	width: 60px;
+	height: 34px;
+	font-size: 0;
+	position: absolute;
+	top: -52px;
+	left: -13px;
+	-webkit-transform: rotate(90deg);
+	transform: rotate(90deg);
+}
+
+.toggle-all + label:before {
+	content: '❯';
+	font-size: 22px;
+	color: #e6e6e6;
+	padding: 10px 27px 10px 27px;
+}
+
+.toggle-all:checked + label:before {
+	color: #737373;
+}
+
+.todoDisplay {
+  width:40vw;
+  margin: 0 auto;
+}
+.todo {
+  display: flex;
+  justify-content: stretch;
+
+  padding: 10px 10px 10px 30px;  
+  border-bottom: 1px solid gray;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  background-color: white;
+  font-size: inherit;
+  opacity: 0.5;
+}
+
+
+.todo-text{
+  width:36vw;
+  text-align:initial;
+  padding: 0px 10px;
+  cursor: pointer;
+}
+
+.completeTodo {
+  /* padding: 10px 10px; */
+  height: 26px;
+  width: 26px;
+  border: 1px solid rgb(109, 161, 109);
+  border-radius: 50%;
+  text-align: center;
+  cursor: pointer;
+}
+
+.edit-input {
+  padding: 10px 10px 10px 30px;
+  width: 50vw;
+  font-size: 24px;
+  border: none;
+  background: rgba(0, 0, 0, 0.003);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  background-color: white;
+}
+
+.edit-input:focus{
+  outline: 1px solid black;
+}
+
+.delete-todo-hide{
+  display: none;
+}
+.delete-todo{
+  height: 26px;
+  width: 26px;
+  border: 1px solid rgb(109, 161, 109);
+  border-radius: 50%;
+  text-align: center;
+  cursor: pointer;
+  color: black;
+  opacity: 0.5;
+}
+
+.delete-todo:hover{
+  color:red;
+  opacity: 0.8;
+  border-color: black;
+}
