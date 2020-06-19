@@ -12,7 +12,7 @@ class Todo extends Component {
     });
   };
   handleEdit = (event) => {
-    this.props.handleEdit(this.state.editValue, this.props.index);
+    this.props.handleEdit(this.state.editValue, this.props.id);
     this.setState({ isEditing: false });
   };
   enterEntered = (event) => {
@@ -23,10 +23,11 @@ class Todo extends Component {
 
   handleDoubleClick = () => {
     this.setState({ isEditing: true });
+    console.log(this.props.id,this.props.index)
   };
 
   render() {
-    let { value, deleteEntry, index, completeTodo } = this.props;
+    let { value, deleteEntry,completeTodo,id } = this.props;
     let { isEditing, editValue } = this.state;
     let strikeOffStyle = value.completed
       ? { color: "gray", textDecoration: "line-through" }
@@ -49,7 +50,7 @@ class Todo extends Component {
           onMouseEnter={() => this.setState({ hover: true })}
           onMouseLeave={() => this.setState({ hover: false })}
         >
-          <div className="completeTodo" onClick={() => completeTodo(index)}>
+          <div className="completeTodo" onClick={() => completeTodo(id)}>
             {status}
           </div>
 
@@ -62,7 +63,7 @@ class Todo extends Component {
           </span>
           <div
             className={displayDeleteButton}
-            onClick={() => deleteEntry(index)}
+            onClick={() => deleteEntry(id)}
           >
             &#10005;
           </div>

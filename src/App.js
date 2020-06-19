@@ -39,30 +39,49 @@ class App extends Component {
     this.setState({todos:updatedTodos});
   }
 
-  deleteEntry = (index) => {
-    let filteredTodos = this.state.todos.filter((_,i)=>{
-      return index !== i;
-    })
+  deleteEntry = (id) => {
+    // let filteredTodos = this.state.todos.filter((_,i)=>{
+    //   return index !== i;
+    // })
+    let clone = [...this.state.todos];
+
+    // let deletedTodo = clone.find((el) => {
+    //   return el.id === id;
+    // });
+    let deletedArr = clone.filter(todo => todo.id !== id);
     this.setState({
-      todos:filteredTodos
+      todos:deletedArr
     })
   }
 
-  completeTodo = (index) => {
+  completeTodo = (id) => {
     let newTodos = [...this.state.todos];
-    let completedTodo = newTodos.filter((_,i) => {
-        return index === i;
+    let completedTodo = newTodos.find((el) => {
+      return el.id === id;
     });
     
-    completedTodo[0].completed = !this.state.todos[index].completed;
-    newTodos[index].completed = completedTodo[0].completed;
+    // completedTodo[0].completed = !this.state.todos[index].completed;
+    // newTodos[index].completed = completedTodo[0].completed;
     
-    this.setState({todos:newTodos});
+    // this.setState({todos:newTodos});
+    completedTodo.completed = !completedTodo.completed;
+    this.setState({todos:newTodos})
+    console.log(completedTodo);
+    console.log(newTodos);
 }
 
-  handleEdit = (editedValue,index) =>{
+  handleEdit = (editedValue,id) =>{
     let clone = [...this.state.todos];
-    clone[index].todo = editedValue;
+    let editedTodo = clone.find((el) => {
+      return el.id === id;
+    });
+    if(editedValue === '') {
+      editedValue = editedTodo.todo;
+    }
+    editedTodo.todo = editedValue;
+    // clone[index].todo = editedValue;
+    // this.setState({todos:clone});
+    console.log(editedTodo,editedValue);
     this.setState({todos:clone});
   }
 

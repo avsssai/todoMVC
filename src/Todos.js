@@ -7,11 +7,12 @@ class Todos extends Component  {
   let todoDisplay = todos.map((todo, i) => {
     return (
       <Todo
-        key={i}
+        key={todo.id}
         value={todo}
         deleteEntry={deleteEntry}
         completeTodo={completeTodo}
         index={i}
+        id={todo.id}
         handleEdit={handleEdit}
         handleDoubleClick={this.handleDoubleClick}
       />
