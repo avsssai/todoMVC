@@ -7,12 +7,9 @@ import Footer from './Footer';
 class App extends Component {
   state = {
     todos:[
-      {todo:"one",completed:false,id:1},
-      {todo:"two",completed:false,id:2},
-      {todo:"three",completed:false,id:3},
-      {todo:"four",completed:false,id:4},
     ],
-    dataFilter:[]
+    dataFilter:[],
+    counter:1
   };
 
   chooseData = (type) => {
@@ -35,8 +32,9 @@ class App extends Component {
 
   handleSubmit = (newTodo) => {
     if(newTodo.todo === '') return;
+    newTodo.id = this.state.counter;
     let updatedTodos = [...this.state.todos, newTodo];
-    this.setState({todos:updatedTodos});
+    this.setState({todos:updatedTodos,counter:this.state.counter+1});
   }
 
   deleteEntry = (id) => {
