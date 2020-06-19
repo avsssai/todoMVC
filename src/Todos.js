@@ -1,8 +1,9 @@
-import React from "react";
+import React, { Component } from "react";
 import Todo from "./Todo";
 
-const Todos = (props) => {
-  let { todos, deleteEntry, completeTodo, handleEdit } = props;
+class Todos extends Component  {
+  render(){
+  let { todos, deleteEntry, completeTodo, handleEdit } = this.props;
   let todoDisplay = todos.map((todo, i) => {
     return (
       <Todo
@@ -12,9 +13,11 @@ const Todos = (props) => {
         completeTodo={completeTodo}
         index={i}
         handleEdit={handleEdit}
+        handleDoubleClick={this.handleDoubleClick}
       />
     );
   });
   return <div className="todoDisplay">{todoDisplay}</div>;
+}
 };
 export default Todos;

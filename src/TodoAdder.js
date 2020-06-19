@@ -23,7 +23,7 @@ class TodoAdder extends Component {
       this.handleSubmit();
     }
   };
-  render() {
+  render () {
     let { todo } = this.state;
     return (
       <form>
@@ -42,7 +42,7 @@ class TodoAdder extends Component {
           onChange={this.handleChange}
           value={todo}
           onKeyDown={this.enteredEnter}
-          placeholder="What need to be done?"
+          placeholder="What needs to be done?"
         />
 
       </form>
