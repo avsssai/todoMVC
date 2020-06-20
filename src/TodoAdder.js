@@ -23,16 +23,21 @@ class TodoAdder extends Component {
       this.handleSubmit();
     }
   };
+  toggleAll = () => {
+    this.props.toggleAll();
+  }
   render () {
     let { todo } = this.state;
+    let todosLength = this.props.todos.length;
+    let toggleAllClass
+    if(todosLength > 0) {
+      toggleAllClass = 'toggle-all-button';
+    }else{
+       toggleAllClass = 'toggle-all-hide' 
+    }
     return (
-      <form>
-        <input
-          id="toggle-all"
-          className="toggle-all"
-          type="checkbox"
-        />
-        <label htmlFor="toggle-all" />
+      <form className='input'>
+        <label className={toggleAllClass} onClick={this.toggleAll} style={{background:"white"}}>&#10003;</label>
 
         <input
           type="text"
@@ -42,6 +47,7 @@ class TodoAdder extends Component {
           onChange={this.handleChange}
           value={todo}
           onKeyDown={this.enteredEnter}
+          style={{background:"white"}}
           placeholder="What needs to be done?"
         />
 

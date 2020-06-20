@@ -2,9 +2,28 @@ import React, { Component } from "react";
 import Todo from "./Todo";
 
 class Todos extends Component  {
+  filterData = (type) => {
+    let chosenData;
+    switch (type) {
+      case "Active":
+        chosenData = this.props.todos.filter(todo => !todo.completed);
+        break;
+      case "Completed":
+        chosenData = this.props.todos.filter(todo => todo.completed);
+        break;
+      case "All":
+      default:
+        chosenData = this.props.todos;   
+        break;
+    }
+    return chosenData;
+  }
+
   render(){
-  let { todos, deleteEntry, completeTodo, handleEdit } = this.props;
-  let todoDisplay = todos.map((todo, i) => {
+  let {deleteEntry, completeTodo, handleEdit,filter} = this.props;
+
+  
+  let todoDisplay = this.filterData(filter).map((todo, i) => {
     return (
       <Todo
         key={todo.id}
