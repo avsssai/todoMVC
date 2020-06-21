@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Footer = (props) => {
-  let { todos, chooseData, filter } = props;
+  let { todos, chooseData, filter, clearCompleted } = props;
   let todosLeftToComplete = todos.filter(todo => {
     return !todo.completed
   });
@@ -25,6 +25,8 @@ const Footer = (props) => {
     active = '';
     completed = 'active';
   }
+  let completedButtonClass = todosCompleted.length > 0 ? 'clear-complete' : 'clear-complete hide';
+
   let phrasing = todosLeftToComplete.length === 1 ? 'todo' : 'todos'
   let FooterSection = (<div className='Footer'>
     <div className="todos-left">{todosLeftToComplete.length} {phrasing} left</div>
@@ -33,7 +35,8 @@ const Footer = (props) => {
       <div className={`active-elements ${active}`} onClick={() => chooseData("Active")}>Active</div>
       <div className={`completed ${completed}`} onClick={() => chooseData("Completed")}>Completed</div>
     </div>
-    <button className='clear-completed'>Clear completed</button>
+    <button className={completedButtonClass} onClick={clearCompleted}>Clear completed</button>
+
   </div>
   )
   let showSectionClass = todos.length > 0 ? FooterSection : '';

@@ -14,23 +14,7 @@ class App extends Component {
   };
 
   chooseData = (type) => {
-    // let chosenData;
-    // switch (type) {
-    //   case "Active":
-    //     chosenData = this.state.todos.filter(todo => !todo.completed);
-    //     break;
-    //   case "Completed":
-    //     chosenData = this.state.todos.filter(todo => todo.completed);
-    //     break;
-    //   case "All":
-    //   default:
-    //     chosenData = this.state.todos;   
-    //     break;
-    // }
-    // this.setState({dataFilter:chosenData});
     this.setState({filter:type})
-
-    // console.log(chosenData);
   }
 
   handleSubmit = (newTodo) => {
@@ -41,14 +25,7 @@ class App extends Component {
   }
 
   deleteEntry = (id) => {
-    // let filteredTodos = this.state.todos.filter((_,i)=>{
-    //   return index !== i;
-    // })
     let clone = [...this.state.todos];
-
-    // let deletedTodo = clone.find((el) => {
-    //   return el.id === id;
-    // });
     let deletedArr = clone.filter(todo => todo.id !== id);
     this.setState({
       todos:deletedArr,
@@ -63,11 +40,6 @@ class App extends Component {
     let completedTodo = newTodos.find((el) => {
       return el.id === id;
     });
-    
-    // completedTodo[0].completed = !this.state.todos[index].completed;
-    // newTodos[index].completed = completedTodo[0].completed;
-    
-    // this.setState({todos:newTodos});
     completedTodo.completed = !completedTodo.completed;
     this.setState({todos:newTodos})
     console.log(completedTodo);
@@ -85,11 +57,10 @@ class App extends Component {
       editedValue = editedTodo.todo;
     }
     editedTodo.todo = editedValue;
-    // clone[index].todo = editedValue;
-    // this.setState({todos:clone});
     console.log(editedTodo,editedValue);
     this.setState({todos:clone});
   }
+
   toggleAll = () => {
     let clone = [...this.state.todos];
     let completeAllTodos = clone.map(el => {
@@ -97,6 +68,12 @@ class App extends Component {
       return el;
     });
     this.setState({todos:completeAllTodos,completeAll:!this.state.completeAll});
+  }
+
+  clearCompleted = () => {
+    let clone = [...this.state.todos];
+    let incompleteTodos = clone.filter(todo => !todo.completed);
+    this.setState({todos:incompleteTodos});
   }
 
 
@@ -110,7 +87,7 @@ class App extends Component {
           filter={this.state.filter}
           className="todos"
         />
-        <Footer todos={this.state.todos} chooseData={this.chooseData} filter={this.state.filter}/>
+        <Footer todos={this.state.todos} chooseData={this.chooseData} filter={this.state.filter} clearCompleted={this.clearCompleted}/>
       </div>
     )
   }
