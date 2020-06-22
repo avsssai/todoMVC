@@ -29,7 +29,7 @@ const Footer = (props) => {
 
   let phrasing = todosLeftToComplete.length === 1 ? 'todo' : 'todos'
   let FooterSection = (<div className='Footer'>
-    <div className="todos-left">{todosLeftToComplete.length} {phrasing} left</div>
+    <div className="todos-left">{todosLeftToComplete.length} <span className="mobile-hide">{phrasing}</span> left</div>
     <div className="nav-buttons">
       <div className={`all ${all}`} onClick={() => chooseData("All")} >All</div>
       <div className={`active-elements ${active}`} onClick={() => chooseData("Active")}>Active</div>

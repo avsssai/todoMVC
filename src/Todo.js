@@ -38,17 +38,15 @@ class Todo extends Component {
     ) : (
       ""
     );
-    let displayDeleteButton = this.state.hover
-      ? "delete-todo"
-      : "delete-todo-hide";
+    // let displayDeleteButton = this.state.hover
+    //   ? "delete-todo"
+    //   : "delete-todo-hide";
 
     let displayTodo;
     if (!isEditing) {
       displayTodo = (
         <div
           className="todo"
-          onMouseEnter={() => this.setState({ hover: true })}
-          onMouseLeave={() => this.setState({ hover: false })}
         >
           <div className="completeTodo" onClick={() => completeTodo(id)}>
             {status}
@@ -61,8 +59,12 @@ class Todo extends Component {
           >
             {value.todo}
           </span>
+          <div className="edit-button" onClick={()=>this.handleDoubleClick(id)}> 
+            <i className="fa fa-pencil" aria-hidden="true"></i>
+
+          </div>
           <div
-            className={displayDeleteButton}
+            className="delete-todo"
             onClick={() => deleteEntry(id)}
           >
             &#10005;

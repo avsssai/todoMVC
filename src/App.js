@@ -3,11 +3,11 @@ import './App.css';
 import Todos from './Todos';
 import TodoAdder from './TodoAdder';
 import Footer from './Footer';
+import Links from './Links';
 
 class App extends Component {
   state = {
     todos:[],
-    // dataFilter:[],
     counter:1,
     filter:"All",
     completeAll:true
@@ -88,9 +88,11 @@ class App extends Component {
           className="todos"
         />
         <Footer todos={this.state.todos} chooseData={this.chooseData} filter={this.state.filter} clearCompleted={this.clearCompleted}/>
+        <Links />
       </div>
     )
   }
 }
+
 
 export default App;
