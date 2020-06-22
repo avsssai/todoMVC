@@ -7,7 +7,7 @@ const Links = (props) => {
             <div>Created by <a href="https://github.com/avsssai">Siva Addanki</a></div>
             <div className="desc"> <span>A React implementation of todoMVC.</span> &#8226;
                 <span>
-                    <a className="github" href="#">github repo</a>
+                    <a className="github" href="https://github.com/avsssai/todoMVC">github repo</a>
                 </span>
             </div>
         </div>
