@@ -235,10 +235,10 @@ label.toggle-all-hide {
 .Links {
   font-size: 12px;
   font-weight: 200;
-  margin-top: 20px;
+  margin-top: 50px;
 }
 .Links > div{
-  margin: 5px;
+  margin: 15px;
 }
 
 .Links > a {
